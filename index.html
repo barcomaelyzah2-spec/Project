@@ -1,173 +1,397 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Portfolio</title>
+<!DOCTYPE html>  <html lang="en">  
+<head>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<title>My Portfolio</title>  <style>  
+  * {  
+    box-sizing: border-box;  
+  }  
+  
+  body {  
+    font-family: 'Segoe UI', sans-serif;  
+    background: linear-gradient(to bottom right, #B3B3B3, #fdfdfd);  
+    color: #000000;  
+    margin: 0;  
+    min-height: 100vh;  
+    display: flex;  
+    flex-direction: column;  
+  }  
+  
+  /* Header */  
+  header {  
+    background-color: #4D757B;  
+    text-align: center;  
+    color: #f0f0f0;  
+    padding: 20px;  
+  }  
+  
+  header img {  
+    width: 120px;  
+    height: 120px;  
+    border-radius: 50%;  
+    object-fit: cover;  
+  }  
+  
+  header h1 {  
+    margin: 10px 0 0;  
+    font-weight: 900;  
+  }  
+  
+  /* Navigation */  
+  nav {  
+    background-color: #2B2B2B;  
+    text-align: center;  
+    padding: 10px 0;  
+  }  
+  
+  nav a {  
+    color: #ffffff;  
+    text-decoration: none;  
+    margin: 0 20px;  
+    font-weight: bold;  
+    cursor: pointer;  
+    transition: color 0.3s;  
+  }  
+  
+  nav a:hover {  
+    color: #ffffff;  
+  }  
+  
+  /* Main Content */  
+  main {  
+    flex: 1;  
+    width: 100%;  
+  }  
+  
+  section {  
+    display: none;  
+    max-width: 900px;  
+    margin: 40px auto;  
+    padding: 20px;  
+    background-color: #f0f0f0;  
+    border-radius: 8px;  
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);  
+  }  
+  
+  section.active {  
+    display: block;  
+  }  
+  
+  section h2, section h1 {  
+    text-align: center;  
+    font-size: 24px;  
+    margin-bottom: 20px;  
+    color: #000000;  
+  }  
+  
+  p {  
+    font-size: 16px;  
+    text-align: justify;  
+    line-height: 1.5;  
+  }  
+  
+  figure {  
+    display: inline-block;  
+    text-align: center;  
+    margin: 15px;  
+  }  
+  
+  figure img, iframe {  
+    border-radius: 10px;  
+    box-shadow: 0 0 6px rgba(0,0,0,0.2);  
+  }  
+  
+  figcaption {  
+    margin-top: 5px;  
+    font-size: 14px;  
+  }  
+  
+  ul {  
+    list-style-type: square;  
+    padding-left: 40px;  
+    text-align: left;  
+  }  
+  
+  ul li a {  
+    color: #660000;  
+    text-decoration: none;  
+    font-size: 16px;  
+  }  
+  
+  ul li a:hover {  
+    text-decoration: underline;  
+  }  
+  
+  /* Contact Form */  
+  form {  
+    max-width: 500px;  
+    margin: 0 auto;  
+    text-align: left;  
+  }  
+  
+  label {  
+    font-weight: bold;  
+  }  
+  
+  input[type="text"], input[type="email"], textarea {  
+    width: 100%;  
+    padding: 8px;  
+    margin: 5px 0 15px;  
+    border: 1px solid #ccc;  
+    border-radius: 5px;  
+  }  
+  
+  input[type="submit"] {  
+    background-color: #000000;  
+    color: white;  
+    padding: 10px 20px;  
+    border: none;  
+    border-radius: 6px;  
+    cursor: pointer;  
+  }  
+  
+  input[type="submit"]:hover {  
+    background-color: #333333;  
+  }  
+  
+  /* Footer */  
+  footer {  
+    text-align: center;  
+    padding: 15px;  
+    background-color: #2B2B2B;  
+    font-size: 14px;  
+    color: #ffffff;  
+    width: 100%;  
+    margin-top: auto;  
+  }  
+  
+  /* Back to Top Button */  
+  #topBtn {  
+    display: none;  
+    position: fixed;  
+    bottom: 40px;  
+    right: 30px;  
+    z-index: 99;  
+    font-size: 18px;  
+    border: none;  
+    outline: none;  
+    background-color:   /* Back to Top Button */
+  #topBtn {
+    display: none;
+    position: fixed;
+    bottom: 40px;
+    right: 30px;
+    z-index: 99;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    background-color: #2B6CE4;
+    color: #000;
+    cursor: pointer;
+    padding: 10px 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+    transition: 0.3s;
+  }
+  
+  #topBtn:hover {
+    background-color: #ffffff;
+    color: #000;
+  };  
+    color: #000;  
+    cursor: pointer;  
+    padding: 10px 15px;  
+    border-radius: 8px;  
+    box-shadow: 0 0 8px rgba(0,0,0,0.3);  
+    transition: 0.3s;  
+  }  
+  
+  #topBtn:hover {  
+    background-color: #ffffff;  
+    color: #000;  
+  }  
+</style>  </head>  
+<body>  <header>  
+  <div>  
+    <img src="Messenger_creation_47DA4367-A52A-41E5-8169-ADFB19C1F8A8.jpeg" alt="Profile Picture">  
+  </div>  
+  <h6>Elyzah Pearl Barcoma BSIT-2A</h6>  
+  <h1>MY PORTFOLIO</h1>  
+</header>  <nav>  
+  <a onclick="showSection('Home')">🏠 Home</a>  
+  <a onclick="showSection('About')">👤 About</a>  
+   <a onclick="showSection('Skills')">💻 Skills</a>  
+  <a onclick="showSection('Projects')">💼 Projects</a>  
+  <a onclick="showSection('Contacts')">📬 Contacts</a>  
+</nav>  <main>  
+  <!-- Home Section -->  
+  <section id="Home" class="active">  
+    <h1>Welcome to My Profile</h1>  
+    <p>I’m an aspiring IT professional driven by a passion for technology and innovation.   
+    I transform creative ideas into impactful digital solutions that merge functionality with design.   
+    Explore my work and discover how I bring imagination to life through code and creativity.</p>  
+  </section>    <!-- About Section -->    <section id="About">  
+    <h2>About Me</h2>  
+    <div style="text-align:center;">  
+      <img src="Messenger_creation_47DA4367-A52A-41E5-8169-ADFB19C1F8A8.jpeg" alt="Profile" width="120" height="120" style="border-radius:50%;"><br><br>  
+      <p>I’m Elyzah Pearl Barcoma, a second-year Bachelor of Science in Information Technology (BSIT) student at Central Philippine State University–Moises Padilla Campus. I have practical experience in C++, JavaScript, PHP, and HTML, as well as skills in graphic design using Adobe Photoshop and prototyping e-commerce interfaces through Figma and Canva.  
+       <br> <br>  I am passionate about designing and developing user-friendly, visually appealing digital projects that combine creativity and functionality. Currently, I am also enhancing my expertise in video and film production using Adobe Premiere Pro to further strengthen my creative and technical capabilities.</p>
+</div>
 
-<style>
-* { box-sizing: border-box; }
-
-body {
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(to bottom right, #B3B3B3, #fdfdfd);
-  margin: 0;
-}
-
-/* HEADER */
-header {
-  background-color: #4D757B;
-  text-align: center;
-  color: #fff;
-  padding: 20px;
-}
-
-header img {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-}
-
-/* CV BUTTON */
-.cv-btn {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 10px 15px;
-  background: #000;
-  color: #fff;
-  border-radius: 6px;
-  text-decoration: none;
-}
-
-.cv-btn:hover { background: #333; }
-
-/* NAV */
-nav {
-  background-color: #2B2B2B;
-  text-align: center;
-  padding: 10px;
-}
-
-nav a {
-  color: #fff;
-  margin: 0 15px;
-  cursor: pointer;
-  text-decoration: none;
-}
-
-/* SECTION */
-section {
-  display: none;
-  max-width: 900px;
-  margin: 40px auto;
-  padding: 20px;
-  background: #f0f0f0;
-  border-radius: 8px;
-}
-
-section.active { display: block; }
-
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 15px;
-  background: #2B2B2B;
-  color: #fff;
-}
-</style>
-</head>
-
-<body>
-
-<header>
-  <img src="Messenger_creation_47DA4367-A52A-41E5-8169-ADFB19C1F8A8.jpeg">
-  <h6>Elyzah Pearl Barcoma BSIT-2A</h6>
-  <h1>MY PORTFOLIO</h1>
-
-  <!-- CV DOWNLOAD -->
-  <a href="Resume-WPS Office.pdf" download class="cv-btn">📄 Download My CV</a>
-</header>
-
-<nav>
-  <a onclick="showSection('Home')">🏠 Home</a>
-  <a onclick="showSection('About')">👤 About</a>
-  <a onclick="showSection('Skills')">💻 Skills</a>
-  <a onclick="showSection('Projects')">💼 Projects</a>
-  <a onclick="showSection('Certificates')">📜 Certificates</a> <!-- ✅ ADDED -->
-  <a onclick="showSection('Contacts')">📬 Contacts</a>
-</nav>
-
-<main>
-
-<section id="Home" class="active">
-  <h1>Welcome</h1>
-  <p>Welcome to my portfolio.</p>
-</section>
-
-<section id="About">
-  <h2>About Me</h2>
-  <p>I am Elyzah Pearl Barcoma, BSIT student.</p>
-</section>
-
-<section id="Skills">
-  <h2>Skills</h2>
-  <p>Photoshop, Canva, Figma, HTML, JS, PHP</p>
-</section>
-
-<section id="Projects">
-  <h2>Projects</h2>
-  <p>All your projects remain here (unchanged).</p>
-</section>
-
-<!-- ✅ CERTIFICATES SECTION -->
-<section id="Certificates">
-  <h2>My Certificates</h2>
-
-  <div style="text-align:center;">
+  </section>    <!-- Skills Section -->    <section id="Skills">  
+    <h2>My Experiences</h2>  
+    <div style="text-align:center;">  
+      <figure>  
+          <img src="Screenshot_20251028-203259_1.png" alt="T-Shirt Layout" width="150" height="150">  
+        <figcaption>Adobe Photoshop</figcaption>  
+      </figure>      <figure>  
+    <img src="B_20250131_103635_0000.jpg" alt="Infographic" width="150" height="150">  
+    <figcaption>Canva</figcaption>  
+  </figure>      
     
-    <figure>
-      <img src="IMG_20260319_164748_357.jpg" width="200">
-      <figcaption>Integrative Foundation for Innovative Systemic Solution on 18th day of March 2026.</figcaption>
-    </figure>
-
-    <figure>
-      <img src="IMG_20260319_164847_598.jpg" width="200">
-      <figcaption>CISCO Networking Fundamentals on 12th day of March 2026.</figcaption>
-    </figure>
-
-    <figure>
-      <img src="IMG_20260319_164907_443.jpg" width="200">
-      <figcaption>Training Workshop on the Creation and Utilization of Official Digital Store through Social Media Platforms and Mobile Application for Marketing on 2nd day of August 2025.</figcaption>
-    </figure>
+  <figure>  
+    <img src="Messenger_creation_4AFA7003-9A0B-4737-B0F1-ABFD8269DF64.jpeg" alt="E-commerce" width="150" height="150">  
+    <figcaption>Figma</figcaption>  
+  </figure>      
     
-    <figure>
-      <img src="IMG_20260319_164935_680.jpg" width="200">
-      <figcaption>IT Training Certificate</figcaption>
-    </figure>
+  <figure>  
+    <img src="Messenger_creation_70105934-7B58-48DF-9AD3-C06AC439031B.jpeg" alt="Excel" width="150" height="150">  
+    <figcaption>Microsoft Excel</figcaption>  
+  </figure>     
+    
+  <figure>  
+    <img src="Messenger_creation_0B42EA4A-94B1-4A97-8773-59A2C6870E1E.jpeg" alt="Premiere" width="150" height="150">  
+    <figcaption>Adobe Premiere Pro</figcaption>  
+  </figure>     
+    
+  <figure>  
+    <img src="Messenger_creation_579D9E71-58DA-4909-8E83-804844219D46.jpeg" alt="HTML" width="150" height="150">  
+    <figcaption>HTML</figcaption>  
+  </figure>      
+    
+  <figure>  
+    <img src="Screenshot_20251028-212737.png" alt="Code in Java" width="150" height="150">  
+    <figcaption>JavaScript</figcaption>  
+  </figure>    
+    
+  <figure>  
+    <img src="IMG_20251021_120112_050.jpg" alt="Code" width="150" height="150">  
+    <figcaption>PHP connect to Database</figcaption>  
+  </figure>    
+    
+  <figure>  
+    <img src="Screenshot_20251028-214448_1.png" alt="Code in Java" width="150" height="150">  
+    <figcaption>C++</figcaption>  
+  </figure>    
+    <figcaption>A fusion of creativity and technology where every pixel, frame, and line of code tells a story. From crafting stunning visuals in Adobe Photoshop, Premiere Pro, Canva, and Figma to building interactive experiences through HTML, JavaScript, and C++, I transform ideas into digital masterpieces. Even in Microsoft Excel, I find beauty in precision and data-driven creativity. This journey isn’t just about editing or coding  it’s about designing experiences that connect innovation, functionality, and imagination.</figcaption>  
+</div>
 
-  </div>
+  </section>  
+  <!-- Projects Section -->  
+  <section id="Projects">  
+    <h2>My Projects</h2>  
+    <div style="text-align:center;">  
+      <figure>  
+          <img src="Screenshot_20251028-203259_1.png" alt="T-Shirt Layout" width="150" height="150">  
+        <figcaption>T-Shirt Layout</figcaption>  
+      </figure>      <figure>  
+    <img src="Screenshot_20251027-181954_1.png" alt="banner" width="150" height="150">  
+    <figcaption>Banner</figcaption>  
+  </figure>      
+   
+   <figure>  
+    <img src="Screenshot_20251027-182131_1.png" alt="Product" width="150" height="150">  
+    <figcaption>Products Design</figcaption>  
+  </figure>      
+    
+   <figure>  
+    <img src="Screenshot_20251028-202831_1.png" alt="Product" width="150" height="150">  
+    <figcaption>Chessboard Design</figcaption>  
+  </figure>     
+    
+  <figure>  
+    <img src="Messenger_creation_0B42EA4A-94B1-4A97-8773-59A2C6870E1E.jpeg" alt="Product" width="150" height="150">  
+    <figcaption>Music Video</figcaption>  
+  </figure>     
+    
+  <figure>  
+    <img src="Messenger_creation_978A3CA7-D5A9-4795-9927-617C470DEF0A.jpeg" alt="Product" width="150" height="150">  
+    <figcaption>Short Film</figcaption>  
+  </figure><br>  
 
-</section>
+<figure>  
+    <iframe width="200" height="160" src="https://www.youtube.com/embed/2MCmnr2L50o" title="Microsoft Tutorial" allowfullscreen></iframe>  
+    <figcaption>Microsoft Tutorial</figcaption>  
+  </figure>  
+    
+  <figure>  
+    <iframe width="200" height="160" src="https://www.youtube.com/embed/ezldKx-jPag" title="Figma Tutorial" allowfullscreen></iframe>  
+    <figcaption>Figma Tutorial</figcaption>  
+  </figure>  
 
-<section id="Contacts">
-  <h2>Contact</h2>
-  <p>Email: elyzahpearlbarcoma@gmail.com</p>
-</section>
+  <figure>  
+    <iframe width="200" height="160" src="https://www.youtube.com/embed/jzWxBuvwuwQ" title="Canva Tutorial" allowfullscreen></iframe>  
+    <figcaption>Canva Tutorial</figcaption>  
+  </figure>  
+</div>  
 
-</main>
+<h2>Outputs</h2>  
+<ul>  
+  <li><a href="https://www.canva.com/design/DAGuOrSlrYk/iIbQv0dtikl2nOm8zvCVdQ/edit?utm_content=DAGuOrSlrYk&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank">Handheld Operating System</a></li>  
+    <li><a href="https://www.canva.com/design/DAGyO5KQ8kM/1LnIzrZMvRFGZgrFQFQyTQ/edit?ui=eyJEIjp7IlQiOnsiQSI6IlBCREJZYlJLZ205QksxOGMifX19&utm_content=DAGyO5KQ8kM&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank">The Three New AI</a></li>  
+  <li><a href="https://www.canva.com/design/DAGvkkupgCw/Xbqb14surP8uVKVB1-yKAw/edit?utm_content=DAGvkkupgCw&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank">Common Problems of Operating System</a></li>  
+  <li><a href="https://www.figma.com/proto/4ihmVEU5GtmMWhn9MzST95/My-Portfolio?page-id=0%3A1&node-id=16-33&starting-point-node-id=1%3A2" target="_blank">Figma Portfolio</a></li>  
+  <li><a href="https://www.figma.com./proto/24Iir7s3JTOxc0ycbqySKN/Food-website?page-id=0%3A1&node-id=12-6" target="_blank">Figma E-Commerce</a></li>  
+</ul>
 
-<footer>
-  © 2025 Elyzah Pearl
-</footer>
+  </section>    <!-- Contacts Section -->    <section id="Contacts">  
+    <h2>Contact Me</h2>  
+    <p>Facebook: <a href="https://www.facebook.com/elyzahpearl.lindongbarcoma?mibextid=ZbWKwL" target="_blank">Elyzah Pearl Lindong Barcoma</a></p>  
+    <p>Email: <a href="mailto:elyzahpearlbarcoma@gmail.com">elyzahpearlbarcoma@gmail.com</a></p>  
+    <p>Instagram: <a href="https://www.instagram.com/itsmeelyzah_pearll" target="_blank">itsmeelyzah_pearll</a></p>  
+    <p>Phone: +639928545507</p><br><br>  <h2>Send Me Your Feedback</h2>  
+<form action="#" method="post">  
+  <label for="name">Your Name:</label>  
+  <input type="text" id="name" name="name" required>  
 
-<script>
-function showSection(id){
-  document.querySelectorAll("section").forEach(sec=>{
-    sec.classList.remove("active");
-  });
-  document.getElementById(id).classList.add("active");
-}
-</script>
+  <label for="email">Your Email:</label>  
+  <input type="email" id="email" name="email" required>  
 
-</body>
-</html>
+  <label for="message">Your Feedback:</label>  
+  <textarea id="message" name="message" rows="4" required></textarea>  
+
+  <input type="submit" value="Submit">  
+</form>
+
+  </section>  
+</main>  <footer>  
+  © 2025 Elyzah Pearl | Made by❤️.  
+</footer>  <!-- Back to Top Button -->  <button onclick="scrollToTop()" id="topBtn" title="Go to top">⬆️</button>
+
+<script>  
+  // Toggle Sections  
+  function showSection(sectionId) {  
+    const sections = document.querySelectorAll('section');  
+    sections.forEach(sec => sec.classList.remove('active'));  
+    document.getElementById(sectionId).classList.add('active');  
+    window.scrollTo({ top: 0, behavior: 'smooth' });  
+  }  
+  
+  // Show "Back to Top" button when scrolling  
+  window.onscroll = function() { scrollFunction() };  
+  
+  function scrollFunction() {  
+    const btn = document.getElementById("topBtn");  
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {  
+      btn.style.display = "block";  
+    } else {  
+      btn.style.display = "none";  
+    }  
+  }  
+  
+  // Smooth scroll to top  
+  function scrollToTop() {  
+    window.scrollTo({ top: 0, behavior: 'smooth' });  
+  }  
+</script>  </body>  
+</html> 
