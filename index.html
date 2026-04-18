@@ -132,15 +132,22 @@ body::before {
             background: #1abc9c;
             transform: translateY(-3px);
         }
-        /* CV BUTTON */
+            /* CV BUTTON FIX */
 .cv-btn {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 10px 15px;
-  background: #2C3E50;
-  color: #fff;
-  border-radius: 6px;
-  text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+    padding: 12px 25px;
+    background-color: #2c3e50; /* Dark background */
+    color: #ffffff !important;   /* Force white text */
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.cv-btn:hover {
+    background-color: #1abc9c; /* Changes color when hovering */
+    color: #ffffff !important;
 }
 
         /* Section Styling */
@@ -346,7 +353,9 @@ body::before {
             <div class="hero-content">
                 <h1>Hi, I’m Elyzah Pearl Barcoma</h1>
                 <p>IT Student of CPSU Moises Padilla</p>
-                <a href="My CV .pdf" download class="cv-btn">📄 Download My CV</a>
+               <a href="My-CV-(1).pdf" download="Elyzah_Pearl_Barcoma_CV.pdf" class="cv-btn">
+    <i class="fas fa-file-download"></i> Download My CV
+</a>
             </div>
         </div>
     </section>
