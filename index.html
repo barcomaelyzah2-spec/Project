@@ -132,6 +132,42 @@ body::before {
             background: #1abc9c;
             transform: translateY(-3px);
         }
+        /* Toast Notification Styling */
+#toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px); /* Start off-screen */
+    background: #1abc9c; /* Theme color */
+    color: white;
+    padding: 12px 24px;
+    border-radius: 50px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    z-index: 5000;
+    font-weight: bold;
+    opacity: 0;
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.5s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0); /* Slide up into view */
+}
+
+/* Success Icon Animation */
+.toast-icon {
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8rem;
+}
             /* CV BUTTON FIX */
 .cv-btn {
     display: inline-block;
@@ -779,6 +815,12 @@ Beyond development, I leverage tools like Figma, Adobe Photoshop, and Adobe Prem
     </div>
 
 </section>
+            <section>
+                 <div id="toast">
+    <span class="toast-icon"><i class="fas fa-check"></i></span>
+    <span id="toast-message">Feedback sent successfully!</span>
+</div>
+</section>
 
     <a href="#home" id="scrollTop"><i class="fas fa-arrow-up"></i></a>
 
@@ -906,6 +948,23 @@ Beyond development, I leverage tools like Figma, Adobe Photoshop, and Adobe Prem
             alert('Thank you for your feedback!');
             this.reset();
         });
+        // --- 3. FORM SUBMISSION WITH TOAST NOTIFICATION ---
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault(); // Prevent page reload
+
+    const toast = document.getElementById('toast');
+    
+    // 1. Show the toast
+    toast.classList.add('show');
+
+    // 2. Reset the form
+    this.reset();
+
+    // 3. Hide the toast after 3.5 seconds
+    setTimeout(() => {
+        toast.classList.remove('show');
+    }, 3500);
+});
     </script>
 </body>
 </html>
